@@ -891,6 +891,7 @@ function run() {
                 versionIndexes.push(match.index);
             }
             const rawContent = changelog.slice(versionIndexes[0], versionIndexes[1]);
+            console.log('rawContent: ', rawContent);
             const lines = rawContent.split('\n');
             const versionLine = lines.shift();
             const versionAndURLRegExp = /\[(\d+\.\d+\.\d+)\]\(([^)]+)/;
@@ -938,7 +939,7 @@ function run() {
                 ];
             }, []);
             const webhook = new webhook_1.IncomingWebhook(webhookURL);
-            yield webhook.send({
+            const payload = {
                 blocks: [
                     {
                         type: 'section',
@@ -960,7 +961,9 @@ function run() {
                         ];
                     }, [])
                 ]
-            });
+            };
+            console.log('slack payload: ', JSON.stringify(payload, null, 2));
+            yield webhook.send(payload);
         }
         catch (error) {
             core.setFailed(error.message);
