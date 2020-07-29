@@ -13,8 +13,9 @@ async function run(): Promise<void> {
   try {
     const webhookURL: string = core.getInput('slack-webhook-url')
     const serviceName: string = core.getInput('service-name')
+    const repository: string = core.getInput('repository')
     const changelog = await fs.readFile(
-      path.resolve(__dirname, '../CHANGELOG.md'),
+      path.resolve(repository, 'docs/CHANGELOG.md'),
       {
         encoding: 'utf-8'
       }
