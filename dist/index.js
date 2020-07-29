@@ -927,6 +927,7 @@ function run() {
                         });
                     }
                 }
+                console.log('commits: ', JSON.stringify(commits, null, 2));
                 const text = commits.reduce((textSum, commit) => {
                     return `${textSum}• *${commit.type}:* ${commit.message.replace(/\n/g, '')} (<${commit.url}|${commit.hash}>)\n`;
                 }, '');
@@ -938,6 +939,7 @@ function run() {
                     }
                 ];
             }, []);
+            console.log('sections: ', JSON.stringify(sections, null, 2));
             const webhook = new webhook_1.IncomingWebhook(webhookURL);
             const payload = {
                 blocks: [

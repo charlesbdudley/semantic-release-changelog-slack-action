@@ -77,6 +77,8 @@ async function run(): Promise<void> {
         }
       }
 
+      console.log('commits: ', JSON.stringify(commits, null, 2))
+
       const text = commits.reduce((textSum, commit) => {
         return `${textSum}• *${commit.type}:* ${commit.message.replace(
           /\n/g,
@@ -92,6 +94,8 @@ async function run(): Promise<void> {
         }
       ]
     }, [] as Section[])
+
+    console.log('sections: ', JSON.stringify(sections, null, 2))
 
     const webhook = new IncomingWebhook(webhookURL)
 
