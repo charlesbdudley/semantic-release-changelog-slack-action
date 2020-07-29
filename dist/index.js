@@ -880,7 +880,8 @@ function run() {
         try {
             const webhookURL = core.getInput('slack-webhook-url');
             const serviceName = core.getInput('service-name');
-            const changelog = yield fs_1.promises.readFile(path_1.default.resolve(__dirname, '../CHANGELOG.md'), {
+            const repository = core.getInput('repository');
+            const changelog = yield fs_1.promises.readFile(path_1.default.resolve(repository, 'docs/CHANGELOG.md'), {
                 encoding: 'utf-8'
             });
             const chunkRegExp = /^#+ \[*\d+\.\d+\.\d+\]*/gm;
