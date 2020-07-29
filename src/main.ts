@@ -30,6 +30,9 @@ async function run(): Promise<void> {
     }
 
     const rawContent = changelog.slice(versionIndexes[0], versionIndexes[1])
+
+    console.log('rawContent: ', rawContent)
+
     const lines = rawContent.split('\n')
     const versionLine = lines.shift()
     const versionAndURLRegExp = /\[(\d+\.\d+\.\d+)\]\(([^)]+)/
@@ -92,7 +95,7 @@ async function run(): Promise<void> {
 
     const webhook = new IncomingWebhook(webhookURL)
 
-    await webhook.send({
+    const payload = {
       blocks: [
         {
           type: 'section',
@@ -114,7 +117,11 @@ async function run(): Promise<void> {
           ]
         }, [] as Block[])
       ]
-    })
+    }
+
+    console.log('slack payload: ', JSON.stringify(payload, null, 2))
+
+    await webhook.send(payload)
   } catch (error) {
     core.setFailed(error.message)
   }

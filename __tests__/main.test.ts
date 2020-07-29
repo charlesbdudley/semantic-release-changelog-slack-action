@@ -18,8 +18,9 @@ test('wait 500 ms', async () => {
 
 // shows how the runner will run a javascript action with env / stdout protocol
 test('test runs', () => {
-  process.env['INPUT_SERVICE-NAME'] = ''
-  process.env['INPUT_SLACK-WEBHOOK-URL'] = ''
+  process.env['INPUT_SERVICE-NAME'] = 'credit-service'
+  process.env['INPUT_SLACK-WEBHOOK-URL'] =
+    'https://hooks.slack.com/services/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'
   const ip = path.join(__dirname, '..', 'lib', 'main.js')
   const options: cp.ExecSyncOptions = {
     env: process.env
