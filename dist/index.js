@@ -914,7 +914,7 @@ function run() {
                 const sectionLines = rawSection.split('\n');
                 const sectionHeading = sectionLines.shift() || '';
                 const commitsRaw = sectionLines.join('\n').trim();
-                const commitRegExp = /- \*\*([^:]+):\*\* ([^(]+) \(\[([^\]]+)\]\(([^)]+)\)/gs;
+                const commitRegExp = /\*\*([^:]+):\*\* ([^(]+) \(\[([^\]]+)\]\(([^)]+)\)/gs;
                 const commits = [];
                 while ((match = commitRegExp.exec(commitsRaw)) !== null) {
                     if (match) {
