@@ -25,7 +25,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@slack/types": "^1.7.0",
     "@slack/webhook": "^5.0.3"
   },
